@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Spring XML configuration file for demonstration purposes.
-  Declares beans and properties that show how to wire dependencies using
-  an XML-based configuration. This file coexists with the Java-based
-  configuration in this project to illustrate both approaches.
+  Shows how to wire beans and dependencies using XML.
+  Topics covered:
+  - Bean definition
+  - Property injection
+  - Inner beans
+  - Lazy initialization (see below)
 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -11,8 +14,9 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--
-      Define an Alien bean with properties injected via XML. The 'com' property
-      is set to a new Laptop bean defined inline.
+      Alien bean with properties injected via XML.
+      The 'com' property is set to a new Laptop bean defined inline (inner bean).
+      Inner beans are private to the enclosing bean and cannot be accessed globally.
     -->
     <bean id="alien" class="org.example.Alien">
         <property name="age" value="10"/>
@@ -21,8 +25,19 @@
         </property>
     </bean>
 
-    <!-- A simple Desktop bean definition. Beans without an explicit id will
-         receive a generated id based on the class name. -->
+    <!--
+      Desktop bean definition. Can be injected as a Computer dependency.
+      Beans without an explicit id will receive a generated id based on the class name.
+    -->
     <bean class="org.example.Desktop"/>
+
+    <!--
+      LAZY INITIALIZATION:
+      To enable lazy initialization for a bean, add lazy-init="true" to the bean definition.
+      Example:
+      <bean id="alien" class="org.example.Alien" lazy-init="true"> ... </bean>
+      Theory: Lazy initialization delays bean creation until it is first requested from the context.
+      Use when bean creation is expensive or not always needed at startup.
+    -->
 
 </beans>
