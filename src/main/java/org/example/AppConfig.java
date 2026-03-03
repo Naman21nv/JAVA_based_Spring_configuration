@@ -3,12 +3,14 @@ package org.example;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class AppConfig {
 
-    @Bean(name="com2")  //@Bean(name={"desktop5","com2"})  //we can give multiple names to the same bean and we can use any of the names to retrieve the bean from the context
-    public Desktop desktop(){
+    @Bean
+    @Scope("prototype")  // by default scope is singleton but here we are changing it to prototype so that every time we call the bean it will create a new instance of the bean
+    public Desktop desktop()  {
         return new Desktop();
     }
 }

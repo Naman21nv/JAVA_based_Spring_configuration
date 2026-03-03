@@ -9,10 +9,12 @@ public class App {
 
        // Desktop dt = context.getBean("desktop",Desktop.class);
         //by default name of the bean is the method name which is desktop here and the type is Desktop.class
-        Desktop dt = context.getBean("com2",Desktop.class);
+        Desktop dt = context.getBean("desktop",Desktop.class);
+        Desktop dt1= context.getBean("desktop",Desktop.class);
 
 
 
+         dt1.compile();
         dt.compile();
     }
 }
