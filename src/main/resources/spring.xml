@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Spring XML configuration for the project.
-
-  Key concepts documented here:
-  - <bean> defines a managed object in the Spring IoC container.
-  - Property injection: <property name="..." value="..."/> and
-    <property name="..."><ref bean="..."/></property> inject values or refs.
-  - Inner beans: A bean declared inside another bean's <property> is a private
-    inner bean that cannot be retrieved by id from the context. Use inner
-    beans for dependencies that should be private to the enclosing bean.
-  - lazy-init="true": delays bean creation until first requested. Useful
-    for expensive-to-create beans that may not be used during application
-    startup.
-  - Scope: singleton (default) vs prototype. Singleton returns the same
-    instance for every request; prototype creates a new instance each time.
--->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- Alien bean: uses setter injection for age and an inner Laptop bean for com -->
     <bean id="alien" class="org.example.Alien">
         <property name="age" value="10"/>
         <property name="com">
@@ -28,8 +11,6 @@
         </property>
     </bean>
 
-    <!-- Desktop as a top-level bean. It can be injected by type where a
-         Computer is required. -->
     <bean class="org.example.Desktop"/>
 
 </beans>
