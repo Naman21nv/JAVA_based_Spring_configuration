@@ -1,19 +1,20 @@
 package org.example;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+
 /**
- * Laptop class implementing the Computer interface.
- * Used as a bean in Spring for dependency injection.
+ * Laptop implementation of the Computer interface.
  *
- * Topics covered:
- * - Interface implementation
- * - Bean definition
- * - Method overriding
+ * Theory and usage:
+ * - Concrete implementation that will be injected into consumers expecting a
+ *   Computer. When component-scanning is enabled or when declared as a bean in
+ *   XML, Spring will create an instance and make it available for injection.
+ * - This simple implementation prints a message when compiling.
  */
+@Component
+@Primary
 public class Laptop implements Computer {
-    /**
-     * Implementation of compile() for Laptop.
-     * Prints a message to indicate compilation on laptop.
-     */
     @Override
     public void compile() {
         System.out.println("Compiling code on the laptop...");
